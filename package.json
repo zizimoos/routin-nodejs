@@ -2,6 +2,10 @@
   "name": "js-220615-1",
   "version": "1.0.0",
   "description": "",
+  "main": "app.js",
+  "bin": {
+    "nodejs": "www.js"
+  },
   "type": "module",
   "scripts": {
     "start": "nodemon",

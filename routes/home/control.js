@@ -1,4 +1,4 @@
-const ctrl = {
+export const get = {
   index: (req, res) => {
     res.render(`home/index.ejs`);
   },
@@ -6,5 +6,3 @@ const ctrl = {
     res.render(`home/login.ejs`);
   },
 };
-
-export default ctrl;

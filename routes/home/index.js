@@ -1,9 +1,9 @@
 import express from "express";
-import ctrl from "./control.js";
+import { get } from "./control.js";
 
 const router = express.Router();
 
-router.get("/", ctrl.index);
-router.get("/login", ctrl.login);
+router.get("/", get.index);
+router.get("/login", get.login);
 
 export default router;
