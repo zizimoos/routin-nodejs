@@ -1,9 +1,9 @@
 import express from "express";
-import homeRoute from "./routes/home/index.js";
+import homeRoute from "./Router.js";
 
 const app = express();
 
-app.set("views", "./views");
+app.set("views", "./src/views");
 app.set("view engine", "ejs");
 
 app.use("/", homeRoute);
