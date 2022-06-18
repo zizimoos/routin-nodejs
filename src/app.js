@@ -7,7 +7,7 @@ const app = express();
 app.set("views", "./src/views");
 app.set("view engine", "ejs");
 
-app.use(express.static(`${path.resolve()}/src/public`));
+app.use(express.static(`${path.resolve()}/public`));
 
 app.use("/", homeRoute);
 
