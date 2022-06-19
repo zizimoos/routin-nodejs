@@ -1,9 +1,10 @@
 import express from "express";
-import { get } from "./routes/home/control.js";
+import { render, process } from "./routes/home/control.js";
 
 const router = express.Router();
 
-router.get("/", get.index);
-router.get("/login", get.login);
+router.get("/", render.index);
+router.get("/login", render.login);
+router.post("/login", process.login);
 
 export default router;
