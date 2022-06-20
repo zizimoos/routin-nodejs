@@ -1,7 +1,7 @@
-const users = {
-  id: ["henry", "tessa", "tomson"],
-  password: ["1111", "2222", "3333"],
-};
+import UserStorage from "../../models/UserStorage.js";
+
+const users = UserStorage.getUsers("id", "password");
+console.log("constroller", users);
 
 export const render = {
   index: (req, res) => {
@@ -15,17 +15,16 @@ export const render = {
 export const process = {
   login: (req, res) => {
     const { id, password } = req.body;
+    const response = {};
     if (users.id.includes(id)) {
       if (users.password[users.id.indexOf(id)] === password) {
-        return res.json({
-          success: true,
-          message: "Login success",
-        });
+        response.success = true;
+        response.message = "로그인 성공";
+        return res.json(response);
       } else {
-        return res.json({
-          success: false,
-          message: "Password incorrect",
-        });
+        response.success = false;
+        response.message = "비밀번호가 일치하지 않습니다.";
+        return res.json(response);
       }
     }
   },
