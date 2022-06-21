@@ -7,6 +7,9 @@ export const render = {
   login: (req, res) => {
     res.render(`home/login.ejs`);
   },
+  register: (req, res) => {
+    res.render(`home/register.ejs`);
+  },
 };
 
 export const process = {
