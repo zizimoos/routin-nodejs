@@ -24,5 +24,12 @@ class UserStorage {
     }, {});
     return userInfo;
   }
+  static addUser(userInfo) {
+    const users = this.#users;
+    users.id.push(userInfo.id);
+    users.password.push(userInfo.password);
+    users.name.push(userInfo.name);
+    return { success: true };
+  }
 }
 export default UserStorage;

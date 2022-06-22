@@ -27,6 +27,11 @@ class User {
       };
     }
   }
+  register() {
+    const user = UserStorage.getUserInfo(this.body.id);
+    const response = UserStorage.addUser(this.body);
+    return response;
+  }
 }
 
 export default User;
