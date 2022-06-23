@@ -4,8 +4,8 @@ class User {
   constructor(body) {
     this.body = body;
   }
-  login() {
-    const user = UserStorage.getUserInfo(this.body.id);
+  async login() {
+    const user = await UserStorage.getUserInfo(this.body.id);
 
     if (user.id) {
       if (user.id === this.body.id && user.password === this.body.password) {
