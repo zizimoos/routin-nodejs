@@ -17,7 +17,7 @@ function register(e) {
     id: id.value,
     name: userName.value,
     password: password.value,
-    confirmPassword: confirmPassword.value,
+    // confirmPassword: confirmPassword.value,
   };
 
   fetch("/register", {

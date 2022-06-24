@@ -27,10 +27,18 @@ class User {
       };
     }
   }
-  register() {
-    const user = UserStorage.getUserInfo(this.body.id);
-    const response = UserStorage.addUser(this.body);
-    return response;
+  async register() {
+    // const user = UserStorage.getUserInfo(this.body.id);
+    try {
+      const response = await UserStorage.addUser(this.body);
+      return response;
+    } catch (e) {
+      console.error(e);
+      return {
+        success: false,
+        message: "회원가입 실패",
+      };
+    }
   }
 }
 
