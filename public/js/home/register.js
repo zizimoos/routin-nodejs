@@ -29,6 +29,7 @@ function register(e) {
   })
     .then((res) => res.json())
     .then((res) => {
+      alert(res.message);
       if (res.success) {
         window.location.href = "/login";
       } else {

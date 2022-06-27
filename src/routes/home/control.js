@@ -17,11 +17,12 @@ export const process = {
     const user = new User(req.body);
     const response = await user.login();
     console.log("control.process : ", response);
-    return res.json(response);
+    res.json(response);
   },
   register: async (req, res) => {
     const user = new User(req.body);
     const response = await user.register();
+    console.log("control.process : ", response);
     res.json(response);
   },
 };

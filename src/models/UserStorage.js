@@ -1,28 +1,6 @@
 import db from "../config/db.js";
 
 class UserStorage {
-  static #getUserInfo(id, data) {
-    const users = JSON.parse(data);
-    const idx = users.id.indexOf(id); // 아이디를 이용해서 인덱스를 찾는다.
-    const userInfo = Object.keys(users).reduce((newUser, info) => {
-      newUser[info] = users[info][idx];
-      return newUser;
-    }, {});
-    return userInfo;
-  }
-
-  static #getUsers(data, fields) {
-    const users = JSON.parse(data);
-    const newUsers = fields.reduce((newUsers, field) => {
-      if (users.hasOwnProperty(field)) {
-        newUsers[field] = users[field];
-      }
-      return newUsers;
-    }, {});
-    return newUsers;
-  }
-
-  static getUsers(...fields) {}
   static getUserInfo(id) {
     return new Promise((resolve, reject) => {
       const query = `SELECT * FROM users WHERE id = ?`;
@@ -34,6 +12,21 @@ class UserStorage {
       });
     });
   }
-  static async addUser(userInfo) {}
+
+  static async addUser(userInfo) {
+    return new Promise((resolve, reject) => {
+      const query = `INSERT INTO users(id, name, password, email) VALUES(?, ?, ?, ?)`;
+      db.query(
+        query,
+        [userInfo.id, userInfo.name, userInfo.password, userInfo.emmail],
+        (err) => {
+          if (err) {
+            reject(err);
+          }
+          resolve({ success: true, message: "회원가입 성공" });
+        }
+      );
+    });
+  }
 }
 export default UserStorage;
