@@ -5,14 +5,17 @@ class User {
     this.body = body;
   }
   async login() {
-    const user = await UserStorage.getUserInfo(this.body.id);
+    const { id, password } = await UserStorage.getUserInfo(this.body.id);
+    console.log(id, this.body.id);
+    console.log(id === this.body.id);
+    console.log(password === this.body.password);
 
-    if (user.id) {
-      if (user.id === this.body.id && user.password === this.body.password) {
+    if (id) {
+      if (id === this.body.id && password === this.body.password) {
+        console.log("login success");
         return {
           success: true,
           message: "로그인 성공",
-          user: user,
         };
       } else {
         return {
