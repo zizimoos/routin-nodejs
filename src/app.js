@@ -1,7 +1,9 @@
 import express from "express";
 import path from "path";
+import dotenv from "dotenv";
 import homeRoute from "./Router.js";
 
+dotenv.config();
 const app = express();
 
 app.set("views", "./src/views");

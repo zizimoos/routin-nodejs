@@ -8,7 +8,12 @@ class UserStorage {
         if (err) {
           reject(err);
         }
-        resolve(result[0]);
+        if (result) {
+          console.log(result[0]);
+          resolve(result[0]);
+        } else {
+          resolve(null);
+        }
       });
     });
   }
